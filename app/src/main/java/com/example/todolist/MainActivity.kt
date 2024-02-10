@@ -24,10 +24,12 @@ class MainActivity : AppCompatActivity() {
             adapter = this@MainActivity.adapter
         }
 
+        adapter.attachSwipeToDelete(binding.recyclerView)
+
         viewModel.listState.observe(this, Observer { state ->
             when (state) {
                 is TaskViewModel.ListState.EmptyList -> {
-                    // handle empty list state
+
                 }
                 is TaskViewModel.ListState.UpdatedList -> {
                     adapter.submitList(state.list)
@@ -46,3 +48,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+

@@ -47,6 +47,7 @@ dependencies {
     implementation ("androidx.room:room-runtime:2.6.1")
     annotationProcessor ("androidx.room:room-compiler:2.6.1")
     ksp ("androidx.room:room-compiler:2.6.1")
+    implementation ("androidx.recyclerview:recyclerview:1.3.0")
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

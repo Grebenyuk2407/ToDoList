@@ -2,9 +2,9 @@ package com.example.todolist
 
 // TaskAdapter.kt
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.databinding.ItemTaskBinding
@@ -47,6 +47,18 @@ class TaskAdapter(private val viewModel: TaskViewModel) :
         override fun areContentsTheSame(oldItem: Task, newItem: Task): Boolean {
             return oldItem == newItem
         }
+    }
+
+    fun attachSwipeToDelete(recyclerView: RecyclerView) {
+        val swipeHandler = object : SwipeToDeleteCallback(recyclerView.context) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                val taskToDelete = getItem(position)
+                viewModel.removeTask(taskToDelete)
+            }
+        }
+        val itemTouchHelper = ItemTouchHelper(swipeHandler)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 }
 
