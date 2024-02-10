@@ -31,7 +31,7 @@ class TaskViewModel: ViewModel() {
         super.onCleared()
     }
     sealed class ListState {
-        object EmptyList:ListState()
+        data object EmptyList:ListState()
         class UpdatedList(val list:List<Task>):ListState()
     }
 }
