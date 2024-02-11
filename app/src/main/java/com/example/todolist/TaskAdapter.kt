@@ -1,6 +1,5 @@
 package com.example.todolist
 
-// TaskAdapter.kt
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
